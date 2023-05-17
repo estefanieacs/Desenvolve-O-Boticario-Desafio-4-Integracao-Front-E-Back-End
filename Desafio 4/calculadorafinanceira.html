@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+        <div class="main-title">
+            <h1>Despesas do mês</h1>
+        </div>
+        <section class="data">
+            <div class="despesas-fixas">
+                <div class="box1">
+                    <div class="title">            
+                        <h2>Entradas</h2>
+                    </div>
+                    <div class="salario">
+                        <img src="salario.png" class="icons">
+                        <div class="salario-texto">
+                            <h3>Salário</h3>
+                            <input id="salario" name="textinput" value="" type="text">
+                        </div>
+                    </div>                
+                    
+                </div>
+                <div class="box2">
+                    <div class="title">            
+                        <h2>Saídas</h2>
+                    </div>
+                    <div class="aluguel">
+                        <img src="aluguel.png" class="icons">
+                        <div class="aluguel-texto">
+                            <h3>Aluguel</h3>
+                            <input id="aluguel" name="textinput" value="" type="text">
+                        </div>
+                    </div>
+                    <div class="internet">
+                        <img src="internet.png" class="icons">
+                        <div class="internet-texto">
+                            <h3>Internet</h3><input id="internet" name="textinput" value="" type="text">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="button-position">
+                <button id="button" onclick="calcular()">Enviar</button>
+            </div>
+        </section>
+            
+    <script>
+    
+        
+        var button = document.querySelector("#button");
+        
+        function calcular(){
+                var salario = document.querySelector("#salario");
+                var valorSalario = parseFloat(salario.value);
+                var aluguel = document.querySelector("#aluguel");
+                var valorAluguel = parseFloat(aluguel.value);
+                var internet = document.querySelector("#internet");
+                var valorInternet = parseFloat(internet.value);
+                var valorTotal = total(entradas(valorSalario), saidas(valorAluguel, valorInternet));
+                alert("Você irá guardar " + valorTotal + " esse mês.");
+            }
+        function entradas(valorSalario){
+            entradas = valorSalario;
+            return entradas;
+        }
+        function saidas(valorAluguel, valorInternet){
+            var saidas = valorAluguel + valorInternet;
+            return saidas;
+        }
+        function total(entradas,saidas){
+            var total = entradas - saidas;
+            return total;
+        }
+        
+      
+       
+    </script>
+    <style>
+        /* reset */
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Site */
+
+        h1{
+            font-size: 32px;
+            margin:10px;
+        }
+        h2{
+            font-size:28px;
+            margin:10px;
+        }
+        h3{
+            font-size:18px;
+            margin:10px;
+        }
+        body{
+            background-image: url(bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            color:rgb(22, 43, 51);
+            font-family: 'Poppins', sans-serif;
+        }
+        .icons{
+            width:20%;
+            height: 20%;
+        }
+        .icons2{
+            width:10%;
+            height: 10%;
+        }
+        /* .data{
+            background-color: rgba(255, 255, 255, .3);
+            border-radius: 2px;
+        } */
+        .despesas-fixas{
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: space-around;
+            width:100%;    
+        }
+        .box1, .box2{
+            background-color: rgba(255, 255, 255, .5);
+            border-radius: 20px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+            padding:30px;
+            margin:20px;
+            height: 300px;
+        }
+        .despesas-fixas img{
+            display: flex;
+            align-items: center;
+        }
+        .data .despesas-fixas{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+        }
+        .salario, .internet, .aluguel{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 300px;
+
+        }
+        input{
+            outline: none;
+            border: 1px solid white;
+            border-radius: 5px;
+            height:30px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+            margin:5px;
+        }
+        input:focus{
+            background-color: rgb(250, 250, 250);
+            border: 1px solid rgb(58, 137, 186);
+            outline: rgb(58, 137, 186);
+        }
+        button{
+            outline: none;
+            border: 1px solid rgb(58, 137, 186);
+            background-color: rgb(58, 137, 186);
+            border-radius: 5px;
+            height:50px;
+            width: 200px;
+            font-size: 20px;
+            color: white;
+            font-style: bold;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+            margin-bottom:50px;
+        }
+        button:active{
+            background-color: white;
+            color:rgb(40, 97, 133);
+            cursor:pointer;
+        }
+        button:hover{
+            background-color: white;
+            color:rgb(72, 171, 232);
+            cursor:pointer;
+        }
+        .button-position{
+            display: flex;
+            width:100%;
+            justify-content: space-around;
+        }
+        .main-title{
+            color:white;
+            text-align: center;
+            padding:10px;
+            margin-top:20px;
+            background-color: rgba(58, 137, 186, 0.8);
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.8);
+        }
+        .title{
+            text-align: center;
+            margin-bottom:20px;
+        }
+        .title h1{
+            margin-bottom:100px;
+        }
+    </style>
+</body>
+</html>
